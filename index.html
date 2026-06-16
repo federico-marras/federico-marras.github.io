@@ -5,14 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Sito personale di Federico Marras su A/B testing, Adobe Target, Adobe Analytics, Data Collection, CRO e tracking strategy.">
     <title>Federico Marras | Experimentation, Analytics & CRO</title>
+    <link rel="icon" type="image/png" href="/assets/img/logo.png">
+    <link rel="apple-touch-icon" href="/assets/img/logo.png">
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/logo.css">
   </head>
   <body id="top">
     <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
 
     <header class="site-header">
       <a class="brand" href="#top" aria-label="Torna alla homepage">
-        <span class="brand-mark">FM</span>
+        <span class="brand-mark" aria-hidden="true">
+          <img src="/assets/img/logo.png" alt="">
+        </span>
         <span class="brand-text">Federico Marras</span>
       </a>
 
@@ -203,62 +208,24 @@
           <p class="eyebrow">Appunti pratici</p>
           <h2>Articoli, risorse e note operative.</h2>
         </div>
-
         <div class="article-tools" aria-label="Strumenti di filtro articoli">
-          <label class="search-field">
-            <span>Ricerca testuale</span>
-            <input id="article-search" type="search" placeholder="Cerca per metrica, Target, DOM..." autocomplete="off">
-          </label>
-          <label class="search-field compact-field">
-            <span>Ordina</span>
-            <select id="article-sort" aria-label="Ordina articoli">
-              <option value="default">Ordine editoriale</option>
-              <option value="title">Titolo</option>
-              <option value="category">Categoria</option>
-              <option value="readingTime">Tempo di lettura</option>
-            </select>
-          </label>
+          <label class="search-field"><span>Ricerca testuale</span><input id="article-search" type="search" placeholder="Cerca per metrica, Target, DOM..." autocomplete="off"></label>
+          <label class="search-field compact-field"><span>Ordina</span><select id="article-sort" aria-label="Ordina articoli"><option value="default">Ordine editoriale</option><option value="title">Titolo</option><option value="category">Categoria</option><option value="readingTime">Tempo di lettura</option></select></label>
           <div class="filter-group" id="category-filters" aria-label="Filtra per categoria"></div>
         </div>
-
         <div class="articles-grid" id="articles-grid" aria-live="polite"></div>
         <p class="empty-state" id="empty-state" hidden>Nessun articolo trovato con i filtri attuali.</p>
       </section>
 
       <section id="build" class="section-shell build-section">
-        <div class="section-heading">
-          <p class="eyebrow">Dietro le quinte</p>
-          <h2>Come ho costruito questo sito</h2>
-        </div>
-        <div class="build-panel">
-          <p>
-            Questo sito è volutamente semplice: HTML semantico, CSS moderno e JavaScript puro.
-            Non usa framework, build step o dipendenze esterne. La struttura è pensata per restare
-            leggibile nel tempo e per funzionare direttamente su GitHub Pages.
-          </p>
-          <ul class="build-list" aria-label="Scelte tecniche del sito">
-            <li>HTML per contenuto e struttura delle sezioni.</li>
-            <li>CSS responsive con variabili, griglie e supporto dark mode.</li>
-            <li>JavaScript per articoli dinamici, filtri, ricerca, progress bar e demo tracking.</li>
-            <li>GitHub Pages come hosting statico, senza pipeline di compilazione.</li>
-          </ul>
-        </div>
+        <div class="section-heading"><p class="eyebrow">Dietro le quinte</p><h2>Come ho costruito questo sito</h2></div>
+        <div class="build-panel"><p>Questo sito è volutamente semplice: HTML semantico, CSS moderno e JavaScript puro. Non usa framework, build step o dipendenze esterne. La struttura è pensata per restare leggibile nel tempo e per funzionare direttamente su GitHub Pages.</p><ul class="build-list" aria-label="Scelte tecniche del sito"><li>HTML per contenuto e struttura delle sezioni.</li><li>CSS responsive con variabili, griglie e supporto dark mode.</li><li>JavaScript per articoli dinamici, filtri, ricerca, progress bar e demo tracking.</li><li>GitHub Pages come hosting statico, senza pipeline di compilazione.</li></ul></div>
       </section>
     </main>
 
     <footer id="contact" class="site-footer">
-      <div>
-        <p class="eyebrow">Contatti</p>
-        <h2>Federico Marras</h2>
-        <p>Note e risorse su sperimentazione digitale, tracking strategy e implementazioni Adobe.</p>
-      </div>
-      <div class="footer-links" aria-label="Link esterni">
-        <a href="https://github.com/federico-marras" data-track="footer_github">GitHub</a>
-        <a href="https://www.linkedin.com/in/federico-marras/" data-track="footer_linkedin">LinkedIn</a>
-        <a href="mailto:federico.marras@gmail.com" data-track="footer_email">Email</a>
-        <a href="#articles" data-track="footer_articles">Articoli</a>
-        <a href="#top">Torna su</a>
-      </div>
+      <div><p class="eyebrow">Contatti</p><h2>Federico Marras</h2><p>Note e risorse su sperimentazione digitale, tracking strategy e implementazioni Adobe.</p></div>
+      <div class="footer-links" aria-label="Link esterni"><a href="https://github.com/federico-marras" data-track="footer_github">GitHub</a><a href="https://www.linkedin.com/in/federico-marras/" data-track="footer_linkedin">LinkedIn</a><a href="mailto:federico.marras@gmail.com" data-track="footer_email">Email</a><a href="#articles" data-track="footer_articles">Articoli</a><a href="#top">Torna su</a></div>
     </footer>
 
     <script src="/assets/js/main.js"></script>
