@@ -1,6 +1,6 @@
 const articles = [
   {
-    title: "Checklist QA per Adobe Target prima del go-live",
+    title: "Checklist QA per un A/B test in Adobe Target",
     category: "Adobe Target",
     description:
       "Controlli essenziali su audience, experience, eventi analytics, fallback e comportamento responsive.",
@@ -8,7 +8,7 @@ const articles = [
     slug: "checklist-qa-adobe-target"
   },
   {
-    title: "Come scegliere la primary metric in un A/B test",
+    title: "Come scegliere la primary metric di un esperimento",
     category: "CRO",
     description:
       "Un criterio pratico per collegare ipotesi, comportamento utente, metrica primaria e guardrail.",
@@ -16,7 +16,7 @@ const articles = [
     slug: "primary-metric-ab-test"
   },
   {
-    title: "MutationObserver con Adobe Target su pagine dinamiche",
+    title: "MutationObserver negli esperimenti Adobe Target",
     category: "JavaScript",
     description:
       "Come applicare experience su DOM che cambia dopo il caricamento, evitando loop e duplicazioni.",
@@ -43,7 +43,7 @@ const articles = [
     title: "Sample ratio mismatch: segnali da non ignorare",
     category: "Analytics",
     description:
-      "Perche controllare la distribuzione del traffico e utile prima di interpretare uplift e confidence.",
+      "Perché controllare la distribuzione del traffico è utile prima di interpretare uplift e confidence.",
     readingTime: "4 min",
     slug: "sample-ratio-mismatch"
   }
@@ -59,6 +59,7 @@ const themeToggle = document.querySelector("#theme-toggle");
 window.dataLayer = window.dataLayer || [];
 
 let selectedCategory = "Tutti";
+let hasInteractedWithArticles = false;
 
 function pushTrackingEvent(eventName, payload = {}) {
   window.dataLayer.push({
@@ -124,7 +125,7 @@ function renderArticles() {
     })
     .join("");
 
-  emptyState.hidden = filteredArticles.length > 0;
+  emptyState.hidden = filteredArticles.length > 0 || !hasInteractedWithArticles;
 }
 
 function updateScrollProgress() {
@@ -152,12 +153,14 @@ filterContainer.addEventListener("click", (event) => {
   }
 
   selectedCategory = button.dataset.category;
+  hasInteractedWithArticles = true;
   renderCategoryFilters();
   renderArticles();
   pushTrackingEvent("article_filter_click", { filter_category: selectedCategory });
 });
 
 searchInput.addEventListener("input", () => {
+  hasInteractedWithArticles = true;
   renderArticles();
   pushTrackingEvent("article_search", { search_term: searchInput.value });
 });
