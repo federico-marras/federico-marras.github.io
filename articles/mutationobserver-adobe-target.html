@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Uso di MutationObserver con Adobe Target su pagine dinamiche.">
+    <title>MutationObserver e Adobe Target | Federico Marras</title>
+    <link rel="stylesheet" href="../styles.css">
+  </head>
+  <body class="article-page">
+    <header class="site-header">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark">FM</span>
+        <span>Federico Marras</span>
+      </a>
+      <nav class="site-nav" aria-label="Navigazione principale">
+        <a href="../index.html#work">Approccio</a>
+        <a href="../index.html#articles">Articoli</a>
+        <a href="../index.html#contact">Contatti</a>
+      </nav>
+    </header>
+
+    <main class="article-shell">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="../index.html">Home</a>
+        <span>/</span>
+        <a href="../index.html#articles">Articoli</a>
+        <span>/</span>
+        <span>MutationObserver Adobe Target</span>
+      </nav>
+
+      <article>
+        <header class="article-hero">
+          <p class="eyebrow">JavaScript</p>
+          <h1>MutationObserver con Adobe Target su pagine dinamiche</h1>
+          <div class="article-meta">
+            <span>16 giugno 2026</span>
+            <span>8 min</span>
+          </div>
+          <div class="article-tags" aria-label="Tag articolo">
+            <span class="tag">JavaScript</span>
+            <span class="tag">DOM</span>
+            <span class="tag">Adobe Target</span>
+          </div>
+        </header>
+
+        <div class="article-body">
+          <section>
+            <h2>Il problema delle pagine dinamiche</h2>
+            <p>
+              Su molte pagine moderne il contenuto rilevante arriva dopo il caricamento iniziale. Un selettore corretto
+              puo quindi non trovare nulla nel momento in cui Adobe Target esegue il codice della variante.
+            </p>
+          </section>
+
+          <section>
+            <h2>Quando usarlo</h2>
+            <p>
+              MutationObserver e utile quando devi aspettare un componente renderizzato da framework, risultati caricati
+              via API o moduli che cambiano dopo interazioni dell'utente.
+            </p>
+            <ul>
+              <li>Osserva solo il contenitore necessario, non l'intero documento senza motivo.</li>
+              <li>Ferma l'observer appena la modifica e stata applicata.</li>
+              <li>Proteggi il codice da esecuzioni duplicate.</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Pattern mentale</h2>
+            <p>
+              Pensa all'observer come a un ponte temporaneo. Deve aiutare la variante a trovare il momento giusto,
+              non diventare un processo permanente che osserva ogni cambiamento della pagina.
+            </p>
+          </section>
+
+          <footer class="article-cta">
+            <h2>Continua a leggere</h2>
+            <p>Ricollega l'implementazione tecnica alla qualita del test e alla scelta della metrica.</p>
+            <div class="article-cta-links">
+              <a class="button secondary" href="checklist-qa-adobe-target.html">Checklist QA</a>
+              <a class="button secondary" href="primary-metric-ab-test.html">Primary metric</a>
+            </div>
+          </footer>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>
