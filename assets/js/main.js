@@ -108,7 +108,7 @@ function renderArticles() {
         "primary-metric-ab-test",
         "mutationobserver-adobe-target"
       ].includes(article.slug);
-      const href = isStaticArticle ? `articles/${article.slug}.html` : "#articles";
+      const href = isStaticArticle ? `/articles/${article.slug}.html` : "#articles";
 
       return `
         <article class="article-card">
