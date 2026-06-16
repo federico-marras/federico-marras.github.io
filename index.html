@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Homepage personale di Federico Marras: QA, experimentation e ottimizzazione dell'esperienza digitale.">
+    <title>Federico Marras | QA & Experimentation</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body id="top">
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="Federico Marras homepage">
+        <span class="brand-mark">FM</span>
+        <span>Federico Marras</span>
+      </a>
+      <nav class="site-nav" aria-label="Navigazione principale">
+        <a href="#work">Approccio</a>
+        <a href="#articles">Articoli</a>
+        <a href="#contact">Contatti</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-content">
+          <p class="eyebrow">QA, A/B testing, analytics implementation</p>
+          <h1>Creo basi solide per esperimenti digitali affidabili.</h1>
+          <p class="hero-copy">
+            Aiuto team prodotto, marketing e sviluppo a progettare test misurabili,
+            validare implementazioni e ridurre il rumore nei dati prima che arrivi in produzione.
+          </p>
+          <div class="hero-actions" aria-label="Azioni principali">
+            <a class="button primary" href="#articles">Leggi gli articoli</a>
+            <a class="button secondary" href="#contact">Parliamone</a>
+          </div>
+        </div>
+        <aside class="hero-panel" aria-label="Aree di competenza">
+          <div>
+            <span class="metric">QA</span>
+            <p>Checklist operative per esperimenti e personalization.</p>
+          </div>
+          <div>
+            <span class="metric">CRO</span>
+            <p>Metriche primarie, guardrail e interpretazione dei risultati.</p>
+          </div>
+          <div>
+            <span class="metric">JS</span>
+            <p>Pattern robusti per DOM dinamici, tracking e Adobe Target.</p>
+          </div>
+        </aside>
+      </section>
+
+      <section id="work" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Metodo</p>
+          <h2>Un approccio pratico, misurabile e vicino al codice.</h2>
+        </div>
+        <div class="principles-grid">
+          <article class="principle">
+            <h3>Esperimenti verificabili</h3>
+            <p>Ogni test parte da ipotesi chiare, criteri di QA e metriche leggibili anche fuori dal team tecnico.</p>
+          </article>
+          <article class="principle">
+            <h3>Implementazioni resilienti</h3>
+            <p>Uso JavaScript progressivo, controlli sul DOM e fallback espliciti per evitare regressioni silenziose.</p>
+          </article>
+          <article class="principle">
+            <h3>Dati utilizzabili</h3>
+            <p>Prima di parlare di conversion rate, controllo eventi, audience, sample ratio e coerenza delle varianti.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="articles" class="section articles-section">
+        <div class="section-heading">
+          <p class="eyebrow">Knowledge base</p>
+          <h2>Articoli e guide operative</h2>
+        </div>
+
+        <div class="article-tools" aria-label="Filtri articoli">
+          <label class="search-field">
+            <span>Cerca</span>
+            <input id="article-search" type="search" placeholder="Metriche, QA, MutationObserver..." autocomplete="off">
+          </label>
+          <div class="filter-group" id="category-filters" aria-label="Categorie articoli"></div>
+        </div>
+
+        <div class="articles-grid" id="articles-grid" aria-live="polite"></div>
+        <p class="empty-state" id="empty-state" hidden>Nessun articolo trovato con questi filtri.</p>
+      </section>
+
+      <section id="contact" class="contact-band">
+        <div>
+          <p class="eyebrow">Collaborazioni</p>
+          <h2>Hai un esperimento da rendere piu solido?</h2>
+          <p>Posso aiutarti a chiarire il piano di misurazione, testare le varianti e documentare i controlli prima del lancio.</p>
+        </div>
+        <a class="button primary" href="https://github.com/federico-marras">Profilo GitHub</a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>&copy; <span id="current-year"></span> Federico Marras</span>
+      <a href="#top">Torna su</a>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
