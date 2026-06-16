@@ -2,7 +2,7 @@
 
 Sito personale/professionale di Federico Marras dedicato a sperimentazione digitale, A/B testing, Adobe Target, Adobe Analytics, Adobe Data Collection, CRO, tracking strategy e JavaScript applicato al DOM.
 
-Il progetto e pensato per GitHub Pages: HTML, CSS e JavaScript puro, senza framework e senza build step.
+Il progetto è pensato per GitHub Pages: HTML, CSS e JavaScript puro, senza framework e senza build step.
 
 ## Struttura
 
@@ -12,6 +12,7 @@ Il progetto e pensato per GitHub Pages: HTML, CSS e JavaScript puro, senza frame
 +-- assets/
 |   +-- css/
 |   |   +-- style.css
+|   |   +-- homepage-improvements.css
 |   +-- js/
 |       +-- main.js
 +-- articles/
@@ -21,7 +22,7 @@ Il progetto e pensato per GitHub Pages: HTML, CSS e JavaScript puro, senza frame
 +-- README.md
 ```
 
-## Funzionalita
+## Funzionalità
 
 - Homepage semantica e responsive.
 - Header sticky.
@@ -32,8 +33,8 @@ Il progetto e pensato per GitHub Pages: HTML, CSS e JavaScript puro, senza frame
 - Dark mode con preferenza salvata in `localStorage`.
 - Progress bar di scroll.
 - Demo tracking tramite `window.dataLayer.push()`.
-- Compatibilita diretta con GitHub Pages.
+- Compatibilità diretta con GitHub Pages.
 
 ## Pubblicazione
 
-Per GitHub Pages e sufficiente pubblicare il repository sul branch `main` e abilitare Pages dalla root del branch.
+Per GitHub Pages è sufficiente pubblicare il repository sul branch `main` e abilitare Pages dalla root del branch.
