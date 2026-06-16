@@ -6,6 +6,7 @@
     <meta name="description" content="Sito personale di Federico Marras su A/B testing, Adobe Target, Adobe Analytics, Data Collection, CRO e tracking strategy.">
     <title>Federico Marras | Experimentation, Analytics & CRO</title>
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/homepage-improvements.css">
   </head>
   <body id="top">
     <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
@@ -21,6 +22,7 @@
         <a href="#method">Metodo</a>
         <a href="#case-studies">Casi</a>
         <a href="#articles">Articoli</a>
+        <a href="#build">Sito</a>
       </nav>
 
       <button class="theme-toggle" type="button" id="theme-toggle" aria-label="Cambia tema" aria-pressed="false">
@@ -105,7 +107,7 @@
         <div class="method-list">
           <article>
             <h3>1. Ipotesi e metrica</h3>
-            <p>Prima del codice: cosa dovrebbe cambiare, per chi, e quale segnale useremo per capirlo.</p>
+            <p>Prima del codice: cosa dovrebbe cambiare, per chi, e quale segnale usare per capirlo.</p>
           </article>
           <article>
             <h3>2. Tracking strategy</h3>
@@ -131,17 +133,29 @@
           <article class="case-card">
             <p class="case-label">E-commerce</p>
             <h3>Tracking incoerente tra varianti</h3>
-            <p>Risolto un doppio firing su CTA dinamiche usando controlli DOM e una nomenclatura eventi piu esplicita.</p>
+            <dl class="case-details">
+              <div><dt>Problema</dt><dd>La variante generava eventi duplicati sulle CTA renderizzate dopo il caricamento iniziale.</dd></div>
+              <div><dt>Soluzione</dt><dd>Controlli DOM, flag anti-duplicazione e nomenclatura eventi più esplicita in Data Collection.</dd></div>
+              <div><dt>Risultato</dt><dd>Dataset più leggibile e confronto tra varianti meno rumoroso durante l'analisi.</dd></div>
+            </dl>
           </article>
           <article class="case-card">
             <p class="case-label">Lead generation</p>
             <h3>Metrica primaria poco stabile</h3>
-            <p>Separata la metrica di interazione dal risultato finale, introducendo guardrail per qualita e completamento.</p>
+            <dl class="case-details">
+              <div><dt>Problema</dt><dd>La metrica scelta era troppo distante dall'interazione modificata dall'esperimento.</dd></div>
+              <div><dt>Soluzione</dt><dd>Separazione tra metrica primaria, metriche secondarie e guardrail di qualità del lead.</dd></div>
+              <div><dt>Risultato</dt><dd>Decisione finale più chiara, con meno dipendenza da oscillazioni di conversione a valle.</dd></div>
+            </dl>
           </article>
           <article class="case-card">
             <p class="case-label">Single page app</p>
             <h3>Experience applicata troppo presto</h3>
-            <p>Gestita l'attesa del componente con MutationObserver, timeout e protezione contro esecuzioni duplicate.</p>
+            <dl class="case-details">
+              <div><dt>Problema</dt><dd>Adobe Target eseguiva la modifica prima che il componente principale fosse disponibile nel DOM.</dd></div>
+              <div><dt>Soluzione</dt><dd>MutationObserver limitato al contenitore rilevante, timeout e disconnessione dopo l'applicazione.</dd></div>
+              <div><dt>Risultato</dt><dd>Experience più stabile su navigazioni dinamiche e minore rischio di flicker o doppie modifiche.</dd></div>
+            </dl>
           </article>
         </div>
       </section>
@@ -163,6 +177,26 @@
         <div class="articles-grid" id="articles-grid" aria-live="polite"></div>
         <p class="empty-state" id="empty-state" hidden>Nessun articolo trovato con i filtri attuali.</p>
       </section>
+
+      <section id="build" class="section-shell build-section">
+        <div class="section-heading">
+          <p class="eyebrow">Dietro le quinte</p>
+          <h2>Come ho costruito questo sito</h2>
+        </div>
+        <div class="build-panel">
+          <p>
+            Questo sito è volutamente semplice: HTML semantico, CSS moderno e JavaScript puro.
+            Non usa framework, build step o dipendenze esterne. La struttura è pensata per restare
+            leggibile nel tempo e per funzionare direttamente su GitHub Pages.
+          </p>
+          <ul class="build-list" aria-label="Scelte tecniche del sito">
+            <li>HTML per contenuto e struttura delle sezioni.</li>
+            <li>CSS responsive con variabili, griglie e supporto dark mode.</li>
+            <li>JavaScript per articoli dinamici, filtri, ricerca, progress bar e demo tracking.</li>
+            <li>GitHub Pages come hosting statico, senza pipeline di compilazione.</li>
+          </ul>
+        </div>
+      </section>
     </main>
 
     <footer id="contact" class="site-footer">
@@ -173,6 +207,8 @@
       </div>
       <div class="footer-links" aria-label="Link esterni">
         <a href="https://github.com/federico-marras" data-track="footer_github">GitHub</a>
+        <a href="https://www.linkedin.com/in/federico-marras/" data-track="footer_linkedin">LinkedIn</a>
+        <a href="mailto:federico.marras@gmail.com" data-track="footer_email">Email</a>
         <a href="#articles" data-track="footer_articles">Articoli</a>
         <a href="#top">Torna su</a>
       </div>
