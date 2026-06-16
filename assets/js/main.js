@@ -5,7 +5,7 @@ const articles = [
     description:
       "Controlli essenziali su audience, experience, eventi analytics, fallback e comportamento responsive.",
     readingTime: "7 min",
-    status: "Draft",
+    status: "Published",
     slug: "checklist-qa-adobe-target"
   },
   {
@@ -14,7 +14,7 @@ const articles = [
     description:
       "Un criterio pratico per collegare ipotesi, comportamento utente, metrica primaria e guardrail.",
     readingTime: "6 min",
-    status: "Draft",
+    status: "Published",
     slug: "primary-metric-ab-test"
   },
   {
@@ -23,7 +23,7 @@ const articles = [
     description:
       "Come applicare experience su DOM che cambia dopo il caricamento, evitando loop e duplicazioni.",
     readingTime: "8 min",
-    status: "Draft",
+    status: "Published",
     slug: "mutationobserver-adobe-target"
   },
   {
@@ -32,7 +32,7 @@ const articles = [
     description:
       "Note su naming, data layer, ownership e verifiche prima di affidare un esperimento ai dati.",
     readingTime: "5 min",
-    status: "Idea",
+    status: "Draft",
     slug: "tracking-strategy-eventi-report"
   },
   {
@@ -41,7 +41,7 @@ const articles = [
     description:
       "Una struttura mentale per mantenere regole, data elements e condizioni comprensibili anche mesi dopo.",
     readingTime: "6 min",
-    status: "Idea",
+    status: "In progress",
     slug: "adobe-data-collection-regole"
   },
   {
@@ -50,12 +50,20 @@ const articles = [
     description:
       "Perché controllare la distribuzione del traffico è utile prima di interpretare uplift e confidence.",
     readingTime: "4 min",
-    status: "Idea",
+    status: "Draft",
     slug: "sample-ratio-mismatch"
   }
 ];
 
-const rotatingKeywords = ["Adobe Target", "Adobe Analytics", "JavaScript", "CRO", "Tracking Strategy"];
+const rotatingKeywords = [
+  "Adobe Target",
+  "Adobe Analytics",
+  "JavaScript",
+  "CRO",
+  "Tracking Strategy",
+  "A/B Testing"
+];
+
 const articleGrid = document.querySelector("#articles-grid");
 const searchInput = document.querySelector("#article-search");
 const sortInput = document.querySelector("#article-sort");
@@ -66,14 +74,21 @@ const themeToggle = document.querySelector("#theme-toggle");
 const rotatingKeyword = document.querySelector("#rotating-keyword");
 const demoTrackingButton = document.querySelector("#demo-tracking-button");
 const demoTrackingOutput = document.querySelector("#demo-tracking-output code");
+const revealTargets = document.querySelectorAll(".section-shell, .signal-band");
 
 window.dataLayer = window.dataLayer || [];
+
 let selectedCategory = "Tutti";
 let hasInteractedWithArticles = false;
 let keywordIndex = 0;
 
 function pushTrackingEvent(eventName, payload = {}) {
-  window.dataLayer.push({ event: eventName, page_type: "homepage", timestamp: new Date().toISOString(), ...payload });
+  window.dataLayer.push({
+    event: eventName,
+    page_type: "homepage",
+    timestamp: new Date().toISOString(),
+    ...payload
+  });
 }
 
 function getCategories() {
@@ -91,7 +106,13 @@ function articleMatchesSearch(article, query) {
 
 function renderCategoryFilters() {
   filterContainer.innerHTML = getCategories()
-    .map((category) => `<button class="filter-button" type="button" data-category="${category}" aria-pressed="${category === selectedCategory}">${category}</button>`)
+    .map(
+      (category) => `
+        <button class="filter-button" type="button" data-category="${category}" aria-pressed="${category === selectedCategory}">
+          ${category}
+        </button>
+      `
+    )
     .join("");
 }
 
@@ -101,34 +122,85 @@ function renderArticles() {
     const matchesCategory = selectedCategory === "Tutti" || article.category === selectedCategory;
     return matchesCategory && articleMatchesSearch(article, query);
   });
+
   const sortedArticles = [...filteredArticles].sort((first, second) => {
     const sortMode = sortInput.value;
-    if (sortMode === "title") return first.title.localeCompare(second.title);
-    if (sortMode === "category") return first.category.localeCompare(second.category);
-    if (sortMode === "readingTime") return parseInt(first.readingTime, 10) - parseInt(second.readingTime, 10);
+    if (sortMode === "title") {
+      return first.title.localeCompare(second.title);
+    }
+    if (sortMode === "category") {
+      return first.category.localeCompare(second.category);
+    }
+    if (sortMode === "readingTime") {
+      return parseInt(first.readingTime, 10) - parseInt(second.readingTime, 10);
+    }
     return articles.indexOf(first) - articles.indexOf(second);
   });
 
   articleGrid.innerHTML = sortedArticles
     .map((article) => {
-      const isStaticArticle = ["checklist-qa-adobe-target", "primary-metric-ab-test", "mutationobserver-adobe-target"].includes(article.slug);
+      const isStaticArticle = [
+        "checklist-qa-adobe-target",
+        "primary-metric-ab-test",
+        "mutationobserver-adobe-target"
+      ].includes(article.slug);
       const href = isStaticArticle ? `/articles/${article.slug}.html` : "#articles";
-      return `<article class="article-card" data-status="${article.status}"><div class="article-meta"><span class="pill">${article.category}</span><span>${article.readingTime}</span><span>${article.status}</span></div><h3>${article.title}</h3><p>${article.description}</p><a href="${href}" data-article-slug="${article.slug}" aria-label="Leggi ${article.title}">Leggi nota</a></article>`;
+
+      return `
+        <article class="article-card" data-status="${article.status}">
+          <div class="article-meta">
+            <span class="pill">${article.category}</span>
+            <span>${article.readingTime}</span>
+            <span>${article.status}</span>
+          </div>
+          <h3>${article.title}</h3>
+          <p>${article.description}</p>
+          <a href="${href}" data-article-slug="${article.slug}" aria-label="Leggi ${article.title}">Leggi nota</a>
+        </article>
+      `;
     })
     .join("");
+
   emptyState.hidden = sortedArticles.length > 0 || !hasInteractedWithArticles;
 }
 
 function rotateKeyword() {
-  if (!rotatingKeyword) return;
+  if (!rotatingKeyword) {
+    return;
+  }
+
   keywordIndex = (keywordIndex + 1) % rotatingKeywords.length;
   rotatingKeyword.textContent = rotatingKeywords[keywordIndex];
 }
 
 function renderDemoTrackingEvent() {
-  const payload = { event: "cta_click", area: "homepage_hero", label: "Leggi articoli" };
+  const payload = {
+    event: "cta_click",
+    area: "homepage_hero",
+    label: "Simula click CTA"
+  };
+
   pushTrackingEvent(payload.event, payload);
   demoTrackingOutput.textContent = `dataLayer.push(${JSON.stringify(payload, null, 2)});`;
+}
+
+function initRevealOnScroll() {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.14 }
+  );
+
+  revealTargets.forEach((target) => {
+    target.classList.add("reveal-on-scroll");
+    observer.observe(target);
+  });
 }
 
 function updateScrollProgress() {
@@ -150,7 +222,10 @@ function initTheme() {
 
 filterContainer.addEventListener("click", (event) => {
   const button = event.target.closest("button[data-category]");
-  if (!button) return;
+  if (!button) {
+    return;
+  }
+
   selectedCategory = button.dataset.category;
   hasInteractedWithArticles = true;
   renderCategoryFilters();
@@ -179,7 +254,10 @@ themeToggle.addEventListener("click", () => {
 
 document.addEventListener("click", (event) => {
   const trackedElement = event.target.closest("[data-track], [data-article-slug]");
-  if (!trackedElement) return;
+  if (!trackedElement) {
+    return;
+  }
+
   pushTrackingEvent("interaction_click", {
     element_id: trackedElement.dataset.track || "article_link",
     article_slug: trackedElement.dataset.articleSlug || undefined
@@ -187,10 +265,12 @@ document.addEventListener("click", (event) => {
 });
 
 demoTrackingButton.addEventListener("click", renderDemoTrackingEvent);
+
 window.addEventListener("scroll", updateScrollProgress, { passive: true });
 setInterval(rotateKeyword, 2200);
 
 initTheme();
+initRevealOnScroll();
 renderCategoryFilters();
 renderArticles();
 updateScrollProgress();
