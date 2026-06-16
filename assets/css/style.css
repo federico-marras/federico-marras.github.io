@@ -432,6 +432,99 @@ pre {
   font-weight: 800;
 }
 
+.article-page {
+  background: var(--bg);
+}
+
+.article-shell {
+  width: min(920px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 56px 0 84px;
+}
+
+.breadcrumb,
+.article-tags,
+.article-cta-links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.breadcrumb {
+  margin-bottom: 32px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.breadcrumb a:hover {
+  color: var(--accent);
+}
+
+.article-hero {
+  margin-bottom: 28px;
+}
+
+.article-hero h1 {
+  max-width: 840px;
+  font-size: 4rem;
+}
+
+.article-tags {
+  margin-top: 18px;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  font-size: 0.78rem;
+  font-weight: 850;
+}
+
+.article-body {
+  display: grid;
+  gap: 28px;
+  padding: clamp(24px, 5vw, 46px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.article-body section {
+  display: grid;
+  gap: 10px;
+}
+
+.article-body h2 {
+  font-size: 2rem;
+}
+
+.article-body p,
+.article-body li {
+  color: var(--muted);
+}
+
+.article-body ul,
+.article-body ol {
+  margin: 0;
+  padding-left: 22px;
+}
+
+.article-cta {
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+.article-cta-links {
+  margin-top: 18px;
+}
+
 @media (max-width: 1040px) {
   h1 {
     font-size: 4.4rem;
@@ -439,6 +532,10 @@ pre {
 
   h2 {
     font-size: 2.35rem;
+  }
+
+  .article-hero h1 {
+    font-size: 3.25rem;
   }
 
   .hero,
@@ -471,6 +568,10 @@ pre {
 
   h2 {
     font-size: 2rem;
+  }
+
+  .article-hero h1 {
+    font-size: 2.6rem;
   }
 
   .section-shell {
