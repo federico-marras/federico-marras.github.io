@@ -34,7 +34,7 @@
       <section class="hero section-shell">
         <div class="hero-copy">
           <p class="eyebrow">A/B testing, Adobe stack, tracking strategy</p>
-          <h1>Sperimentazione digitale con basi tecniche solide.</h1>
+          <h1>Progetto esperimenti digitali con <span id="rotating-keyword">Adobe Target</span>.</h1>
           <p class="lead">
             Appunti, metodo e casi studio anonimi su Adobe Target, Adobe Analytics,
             Data Collection, CRO, JavaScript e manipolazione del DOM. Uno spazio personale
@@ -46,18 +46,20 @@
           </div>
         </div>
 
-        <aside class="hero-console" aria-label="Sintesi tecnica">
+        <aside class="hero-console experiment-console" aria-label="Experiment console">
           <div class="console-topbar">
             <span></span>
             <span></span>
             <span></span>
           </div>
-          <pre><code>experiment.plan({
-  hypothesis: "chiara",
-  primaryMetric: "misurabile",
-  tracking: "validato",
-  qa: ["target", "analytics", "dom"]
-});</code></pre>
+          <div class="console-lines" id="experiment-console-lines">
+            <p><span>Experiment status</span><strong>Running</strong></p>
+            <p><span>Primary KPI</span><strong>form_submit_completed</strong></p>
+            <p><span>Audience</span><strong>mobile users</strong></p>
+            <p><span>Tool</span><strong>Adobe Target</strong></p>
+            <p><span>Tracking</span><strong>Adobe Analytics</strong></p>
+            <p><span>QA</span><strong>passed</strong></p>
+          </div>
         </aside>
       </section>
 
@@ -70,148 +72,86 @@
         <span>DOM</span>
       </section>
 
+      <section id="workflow" class="section-shell workflow-section">
+        <div class="section-heading">
+          <p class="eyebrow">Experiment workflow</p>
+          <h2>Dal segnale iniziale alla lettura del risultato.</h2>
+        </div>
+        <div class="workflow-grid" aria-label="Workflow di sperimentazione">
+          <article><span>01</span><h3>Insight</h3><p>Raccolta del segnale: dato, comportamento osservato, frizione o opportunità.</p></article>
+          <article><span>02</span><h3>Hypothesis</h3><p>Traduzione dell'insight in ipotesi misurabile, audience e metrica primaria.</p></article>
+          <article><span>03</span><h3>Implementation</h3><p>Setup in Adobe Target, JavaScript necessario e gestione dei casi limite nel DOM.</p></article>
+          <article><span>04</span><h3>Tracking QA</h3><p>Verifica di eventi, variabili, deduplica, audience e coerenza tra tool.</p></article>
+          <article><span>05</span><h3>Analysis</h3><p>Lettura del risultato con guardrail, segmenti e attenzione alla qualità del campione.</p></article>
+        </div>
+      </section>
+
       <section id="competences" class="section-shell">
         <div class="section-heading">
           <p class="eyebrow">Competenze</p>
           <h2>Stack tecnico e pensiero sperimentale nello stesso posto.</h2>
         </div>
         <div class="competence-grid">
-          <article class="info-card">
-            <span class="card-kicker">01</span>
-            <h3>Adobe Target</h3>
-            <p>Setup di esperimenti, QA delle experience, gestione audience e personalizzazioni su pagine statiche o dinamiche.</p>
-          </article>
-          <article class="info-card">
-            <span class="card-kicker">02</span>
-            <h3>Adobe Analytics</h3>
-            <p>Lettura dei dati, metriche primarie, guardrail, segmenti e controlli per evitare interpretazioni fragili.</p>
-          </article>
-          <article class="info-card">
-            <span class="card-kicker">03</span>
-            <h3>Adobe Data Collection</h3>
-            <p>Strategia eventi, regole, data elements e governance del tracking tra implementazione e reporting.</p>
-          </article>
-          <article class="info-card">
-            <span class="card-kicker">04</span>
-            <h3>JavaScript e DOM</h3>
-            <p>Manipolazioni robuste, MutationObserver, controlli anti-duplicazione e integrazione con pagine renderizzate in ritardo.</p>
-          </article>
+          <article class="info-card"><span class="card-kicker">01</span><h3>Adobe Target</h3><p>Setup di esperimenti, QA delle experience, gestione audience e personalizzazioni su pagine statiche o dinamiche.</p></article>
+          <article class="info-card"><span class="card-kicker">02</span><h3>Adobe Analytics</h3><p>Lettura dei dati, metriche primarie, guardrail, segmenti e controlli per evitare interpretazioni fragili.</p></article>
+          <article class="info-card"><span class="card-kicker">03</span><h3>Adobe Data Collection</h3><p>Strategia eventi, regole, data elements e governance del tracking tra implementazione e reporting.</p></article>
+          <article class="info-card"><span class="card-kicker">04</span><h3>JavaScript e DOM</h3><p>Manipolazioni robuste, MutationObserver, controlli anti-duplicazione e integrazione con pagine renderizzate in ritardo.</p></article>
         </div>
       </section>
 
       <section id="method" class="section-shell split-section">
-        <div class="section-heading">
-          <p class="eyebrow">Metodo</p>
-          <h2>Esperimenti progettati per essere letti, non solo lanciati.</h2>
-        </div>
+        <div class="section-heading"><p class="eyebrow">Metodo</p><h2>Esperimenti progettati per essere letti, non solo lanciati.</h2></div>
         <div class="method-list">
-          <article>
-            <h3>1. Ipotesi e metrica</h3>
-            <p>Prima del codice: cosa dovrebbe cambiare, per chi, e quale segnale usare per capirlo.</p>
-          </article>
-          <article>
-            <h3>2. Tracking strategy</h3>
-            <p>Eventi, variabili, naming, deduplica e punti di controllo vengono definiti prima del go-live.</p>
-          </article>
-          <article>
-            <h3>3. Implementazione e QA</h3>
-            <p>Target, Data Collection e DOM vengono verificati insieme, su device e condizioni realistiche.</p>
-          </article>
-          <article>
-            <h3>4. Lettura del risultato</h3>
-            <p>Il risultato viene interpretato guardando metrica primaria, guardrail, segmenti e coerenza campionaria.</p>
-          </article>
+          <article><h3>1. Ipotesi e metrica</h3><p>Prima del codice: cosa dovrebbe cambiare, per chi, e quale segnale usare per capirlo.</p></article>
+          <article><h3>2. Tracking strategy</h3><p>Eventi, variabili, naming, deduplica e punti di controllo vengono definiti prima del go-live.</p></article>
+          <article><h3>3. Implementazione e QA</h3><p>Target, Data Collection e DOM vengono verificati insieme, su device e condizioni realistiche.</p></article>
+          <article><h3>4. Lettura del risultato</h3><p>Il risultato viene interpretato guardando metrica primaria, guardrail, segmenti e coerenza campionaria.</p></article>
+        </div>
+      </section>
+
+      <section id="tracking-demo" class="section-shell demo-section">
+        <div class="section-heading"><p class="eyebrow">Mini tracking demo</p><h2>Un evento demo, visibile nel data layer.</h2></div>
+        <div class="demo-card">
+          <div>
+            <h3>Simula un click tracciato</h3>
+            <p>Il bottone inserisce un evento in <code>window.dataLayer</code> e mostra il payload generato.</p>
+            <button class="button primary" type="button" id="demo-tracking-button">Genera evento demo</button>
+          </div>
+          <pre class="demo-output" id="demo-tracking-output"><code>dataLayer.push({
+  event: "waiting_for_interaction"
+});</code></pre>
         </div>
       </section>
 
       <section id="case-studies" class="section-shell">
-        <div class="section-heading">
-          <p class="eyebrow">Casi studio anonimi</p>
-          <h2>Problemi reali, senza nomi o dati sensibili.</h2>
-        </div>
+        <div class="section-heading"><p class="eyebrow">Casi studio anonimi</p><h2>Problemi reali, senza nomi o dati sensibili.</h2></div>
         <div class="case-grid">
-          <article class="case-card">
-            <p class="case-label">E-commerce</p>
-            <h3>Tracking incoerente tra varianti</h3>
-            <dl class="case-details">
-              <div><dt>Problema</dt><dd>La variante generava eventi duplicati sulle CTA renderizzate dopo il caricamento iniziale.</dd></div>
-              <div><dt>Soluzione</dt><dd>Controlli DOM, flag anti-duplicazione e nomenclatura eventi più esplicita in Data Collection.</dd></div>
-              <div><dt>Risultato</dt><dd>Dataset più leggibile e confronto tra varianti meno rumoroso durante l'analisi.</dd></div>
-            </dl>
-          </article>
-          <article class="case-card">
-            <p class="case-label">Lead generation</p>
-            <h3>Metrica primaria poco stabile</h3>
-            <dl class="case-details">
-              <div><dt>Problema</dt><dd>La metrica scelta era troppo distante dall'interazione modificata dall'esperimento.</dd></div>
-              <div><dt>Soluzione</dt><dd>Separazione tra metrica primaria, metriche secondarie e guardrail di qualità del lead.</dd></div>
-              <div><dt>Risultato</dt><dd>Decisione finale più chiara, con meno dipendenza da oscillazioni di conversione a valle.</dd></div>
-            </dl>
-          </article>
-          <article class="case-card">
-            <p class="case-label">Single page app</p>
-            <h3>Experience applicata troppo presto</h3>
-            <dl class="case-details">
-              <div><dt>Problema</dt><dd>Adobe Target eseguiva la modifica prima che il componente principale fosse disponibile nel DOM.</dd></div>
-              <div><dt>Soluzione</dt><dd>MutationObserver limitato al contenitore rilevante, timeout e disconnessione dopo l'applicazione.</dd></div>
-              <div><dt>Risultato</dt><dd>Experience più stabile su navigazioni dinamiche e minore rischio di flicker o doppie modifiche.</dd></div>
-            </dl>
-          </article>
+          <article class="case-card"><p class="case-label">E-commerce</p><h3>Tracking incoerente tra varianti</h3><dl class="case-details"><div><dt>Problema</dt><dd>La variante generava eventi duplicati sulle CTA renderizzate dopo il caricamento iniziale.</dd></div><div><dt>Soluzione</dt><dd>Controlli DOM, flag anti-duplicazione e nomenclatura eventi più esplicita in Data Collection.</dd></div><div><dt>Risultato</dt><dd>Dataset più leggibile e confronto tra varianti meno rumoroso durante l'analisi.</dd></div></dl></article>
+          <article class="case-card"><p class="case-label">Lead generation</p><h3>Metrica primaria poco stabile</h3><dl class="case-details"><div><dt>Problema</dt><dd>La metrica scelta era troppo distante dall'interazione modificata dall'esperimento.</dd></div><div><dt>Soluzione</dt><dd>Separazione tra metrica primaria, metriche secondarie e guardrail di qualità del lead.</dd></div><div><dt>Risultato</dt><dd>Decisione finale più chiara, con meno dipendenza da oscillazioni di conversione a valle.</dd></div></dl></article>
+          <article class="case-card"><p class="case-label">Single page app</p><h3>Experience applicata troppo presto</h3><dl class="case-details"><div><dt>Problema</dt><dd>Adobe Target eseguiva la modifica prima che il componente principale fosse disponibile nel DOM.</dd></div><div><dt>Soluzione</dt><dd>MutationObserver limitato al contenitore rilevante, timeout e disconnessione dopo l'applicazione.</dd></div><div><dt>Risultato</dt><dd>Experience più stabile su navigazioni dinamiche e minore rischio di flicker o doppie modifiche.</dd></div></dl></article>
         </div>
       </section>
 
       <section id="articles" class="section-shell articles-section">
-        <div class="section-heading">
-          <p class="eyebrow">Appunti pratici</p>
-          <h2>Articoli, risorse e note operative.</h2>
-        </div>
-
+        <div class="section-heading"><p class="eyebrow">Appunti pratici</p><h2>Articoli, risorse e note operative.</h2></div>
         <div class="article-tools" aria-label="Strumenti di filtro articoli">
-          <label class="search-field">
-            <span>Ricerca testuale</span>
-            <input id="article-search" type="search" placeholder="Cerca per metrica, Target, DOM..." autocomplete="off">
-          </label>
+          <label class="search-field"><span>Ricerca testuale</span><input id="article-search" type="search" placeholder="Cerca per metrica, Target, DOM..." autocomplete="off"></label>
+          <label class="search-field compact-field"><span>Ordina</span><select id="article-sort" aria-label="Ordina articoli"><option value="default">Ordine editoriale</option><option value="title">Titolo</option><option value="category">Categoria</option><option value="readingTime">Tempo di lettura</option></select></label>
           <div class="filter-group" id="category-filters" aria-label="Filtra per categoria"></div>
         </div>
-
         <div class="articles-grid" id="articles-grid" aria-live="polite"></div>
         <p class="empty-state" id="empty-state" hidden>Nessun articolo trovato con i filtri attuali.</p>
       </section>
 
       <section id="build" class="section-shell build-section">
-        <div class="section-heading">
-          <p class="eyebrow">Dietro le quinte</p>
-          <h2>Come ho costruito questo sito</h2>
-        </div>
-        <div class="build-panel">
-          <p>
-            Questo sito è volutamente semplice: HTML semantico, CSS moderno e JavaScript puro.
-            Non usa framework, build step o dipendenze esterne. La struttura è pensata per restare
-            leggibile nel tempo e per funzionare direttamente su GitHub Pages.
-          </p>
-          <ul class="build-list" aria-label="Scelte tecniche del sito">
-            <li>HTML per contenuto e struttura delle sezioni.</li>
-            <li>CSS responsive con variabili, griglie e supporto dark mode.</li>
-            <li>JavaScript per articoli dinamici, filtri, ricerca, progress bar e demo tracking.</li>
-            <li>GitHub Pages come hosting statico, senza pipeline di compilazione.</li>
-          </ul>
-        </div>
+        <div class="section-heading"><p class="eyebrow">Dietro le quinte</p><h2>Come ho costruito questo sito</h2></div>
+        <div class="build-panel"><p>Questo sito è volutamente semplice: HTML semantico, CSS moderno e JavaScript puro. Non usa framework, build step o dipendenze esterne. La struttura è pensata per restare leggibile nel tempo e per funzionare direttamente su GitHub Pages.</p><ul class="build-list" aria-label="Scelte tecniche del sito"><li>HTML per contenuto e struttura delle sezioni.</li><li>CSS responsive con variabili, griglie e supporto dark mode.</li><li>JavaScript per articoli dinamici, filtri, ricerca, progress bar e demo tracking.</li><li>GitHub Pages come hosting statico, senza pipeline di compilazione.</li></ul></div>
       </section>
     </main>
 
     <footer id="contact" class="site-footer">
-      <div>
-        <p class="eyebrow">Contatti</p>
-        <h2>Federico Marras</h2>
-        <p>Note e risorse su sperimentazione digitale, tracking strategy e implementazioni Adobe.</p>
-      </div>
-      <div class="footer-links" aria-label="Link esterni">
-        <a href="https://github.com/federico-marras" data-track="footer_github">GitHub</a>
-        <a href="https://www.linkedin.com/in/federico-marras/" data-track="footer_linkedin">LinkedIn</a>
-        <a href="mailto:federico.marras@gmail.com" data-track="footer_email">Email</a>
-        <a href="#articles" data-track="footer_articles">Articoli</a>
-        <a href="#top">Torna su</a>
-      </div>
+      <div><p class="eyebrow">Contatti</p><h2>Federico Marras</h2><p>Note e risorse su sperimentazione digitale, tracking strategy e implementazioni Adobe.</p></div>
+      <div class="footer-links" aria-label="Link esterni"><a href="https://github.com/federico-marras" data-track="footer_github">GitHub</a><a href="https://www.linkedin.com/in/federico-marras/" data-track="footer_linkedin">LinkedIn</a><a href="mailto:federico.marras@gmail.com" data-track="footer_email">Email</a><a href="#articles" data-track="footer_articles">Articoli</a><a href="#top">Torna su</a></div>
     </footer>
 
     <script src="/assets/js/main.js"></script>
