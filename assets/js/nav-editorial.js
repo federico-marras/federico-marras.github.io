@@ -7,6 +7,7 @@
   var navActions = document.querySelector(".nav-actions");
   var mobileNavPanel = document.getElementById("mobile-nav-panel");
   var themeToggle = document.getElementById("theme-toggle");
+  var navBrandImage = document.querySelector(".nav-brand-mark img");
 
   function removeThemeToggle() {
     if (themeToggle && themeToggle.parentNode) {
@@ -15,15 +16,22 @@
     document.documentElement.removeAttribute("data-theme");
   }
 
+  function normalizeLogo() {
+    if (!navBrandImage) return;
+    navBrandImage.setAttribute("src", "/assets/img/logo.png");
+    navBrandImage.setAttribute("alt", "");
+  }
+
   function buildHamburgerButton() {
     if (!navMenuToggle || !navActions) return;
 
-    navMenuToggle.innerHTML = "";
-    navMenuToggle.className = "nav-icon-btn nav-menu-btn";
-    navMenuToggle.setAttribute("type", "button");
-    navMenuToggle.setAttribute("aria-label", "Apri menu");
-    navMenuToggle.setAttribute("aria-expanded", "false");
-    navMenuToggle.setAttribute("aria-controls", "mobile-nav-panel");
+    var cleanButton = navMenuToggle.cloneNode(false);
+    cleanButton.className = "nav-icon-btn nav-menu-btn";
+    cleanButton.setAttribute("type", "button");
+    cleanButton.setAttribute("id", "nav-menu-toggle");
+    cleanButton.setAttribute("aria-label", "Apri menu");
+    cleanButton.setAttribute("aria-expanded", "false");
+    cleanButton.setAttribute("aria-controls", "mobile-nav-panel");
 
     var lines = document.createElement("span");
     lines.className = "hamburger-lines";
@@ -33,7 +41,9 @@
       lines.appendChild(document.createElement("span"));
     }
 
-    navMenuToggle.appendChild(lines);
+    cleanButton.appendChild(lines);
+    navMenuToggle.parentNode.replaceChild(cleanButton, navMenuToggle);
+    navMenuToggle = cleanButton;
   }
 
   function renderMobileLinks() {
@@ -74,9 +84,18 @@
     navMenuToggle.setAttribute("aria-label", "Apri menu");
   }
 
-  function toggleMobileNav() {
+  function toggleMobileNav(event) {
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      if (typeof event.stopImmediatePropagation === "function") {
+        event.stopImmediatePropagation();
+      }
+    }
+
     if (!siteHeader || !navMenuToggle) return;
-    var isOpen = siteHeader.classList.toggle("is-open");
+    var isOpen = !siteHeader.classList.contains("is-open");
+    siteHeader.classList.toggle("is-open", isOpen);
     document.body.classList.toggle("nav-lock", isOpen);
     navMenuToggle.setAttribute("aria-expanded", String(isOpen));
     navMenuToggle.setAttribute("aria-label", isOpen ? "Chiudi menu" : "Apri menu");
@@ -107,6 +126,7 @@
   }
 
   removeThemeToggle();
+  normalizeLogo();
   buildHamburgerButton();
   renderMobileLinks();
 
