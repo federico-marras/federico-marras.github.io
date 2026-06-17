@@ -8,7 +8,6 @@
     <link rel="icon" type="image/png" href="/assets/img/logo.png">
     <link rel="apple-touch-icon" href="/assets/img/logo.png">
     <link rel="stylesheet" href="/assets/css/style.css">
-    <link rel="stylesheet" href="/assets/css/logo.css">
   </head>
   <body id="top">
     <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
@@ -28,7 +27,6 @@
           <a class="nav-link" href="#articles">Articoli</a>
           <a class="nav-link" href="#tracking-demo">Lab</a>
           <a class="nav-link" href="#case-studies">Case study</a>
-          <a class="nav-link" href="#contact">Contatti</a>
         </div>
 
         <div class="nav-actions">
@@ -47,7 +45,6 @@
           <a class="nav-link" href="#articles">Articoli</a>
           <a class="nav-link" href="#tracking-demo">Lab</a>
           <a class="nav-link" href="#case-studies">Case study</a>
-          <a class="nav-link" href="#contact">Contatti</a>
         </div>
       </nav>
     </header>
@@ -189,78 +186,33 @@
             <p class="case-label">E-commerce</p>
             <h3>Tracking incoerente tra varianti</h3>
             <dl class="case-details">
-              <div>
-                <dt>Problema</dt>
-                <dd>La variante generava eventi duplicati sulle CTA renderizzate dopo il caricamento iniziale.</dd>
-              </div>
-              <div>
-                <dt>Ipotesi</dt>
-                <dd>Il rumore nel tracking stava alterando il confronto tra controllo e variante più della modifica visuale.</dd>
-              </div>
-              <div>
-                <dt>Implementazione</dt>
-                <dd>Controlli DOM, flag anti-duplicazione e nomenclatura eventi più esplicita in Data Collection.</dd>
-              </div>
-              <div>
-                <dt>Misurazione</dt>
-                <dd>Confronto tra eventi raw, chiamate Adobe Analytics e conteggi aggregati per variante.</dd>
-              </div>
-              <div>
-                <dt>Output</dt>
-                <dd>Dataset più leggibile e confronto tra varianti meno rumoroso durante l'analisi.</dd>
-              </div>
+              <div><dt>Problema</dt><dd>La variante generava eventi duplicati sulle CTA renderizzate dopo il caricamento iniziale.</dd></div>
+              <div><dt>Ipotesi</dt><dd>Il rumore nel tracking stava alterando il confronto tra controllo e variante più della modifica visuale.</dd></div>
+              <div><dt>Implementazione</dt><dd>Controlli DOM, flag anti-duplicazione e nomenclatura eventi più esplicita in Data Collection.</dd></div>
+              <div><dt>Misurazione</dt><dd>Confronto tra eventi raw, chiamate Adobe Analytics e conteggi aggregati per variante.</dd></div>
+              <div><dt>Output</dt><dd>Dataset più leggibile e confronto tra varianti meno rumoroso durante l'analisi.</dd></div>
             </dl>
           </article>
           <article class="case-card">
             <p class="case-label">Lead generation</p>
             <h3>Metrica primaria poco stabile</h3>
             <dl class="case-details">
-              <div>
-                <dt>Problema</dt>
-                <dd>La metrica scelta era troppo distante dall'interazione modificata dall'esperimento.</dd>
-              </div>
-              <div>
-                <dt>Ipotesi</dt>
-                <dd>Una metrica più vicina al comportamento osservato avrebbe reso la lettura meno ambigua.</dd>
-              </div>
-              <div>
-                <dt>Implementazione</dt>
-                <dd>Separazione tra metrica primaria, metriche secondarie e guardrail di qualità del lead.</dd>
-              </div>
-              <div>
-                <dt>Misurazione</dt>
-                <dd>Lettura combinata di click qualificati, completamenti form e segnali di qualità post-submit.</dd>
-              </div>
-              <div>
-                <dt>Output</dt>
-                <dd>Decisione finale più chiara, con meno dipendenza da oscillazioni di conversione a valle.</dd>
-              </div>
+              <div><dt>Problema</dt><dd>La metrica scelta era troppo distante dall'interazione modificata dall'esperimento.</dd></div>
+              <div><dt>Ipotesi</dt><dd>Una metrica più vicina al comportamento osservato avrebbe reso la lettura meno ambigua.</dd></div>
+              <div><dt>Implementazione</dt><dd>Separazione tra metrica primaria, metriche secondarie e guardrail di qualità del lead.</dd></div>
+              <div><dt>Misurazione</dt><dd>Lettura combinata di click qualificati, completamenti form e segnali di qualità post-submit.</dd></div>
+              <div><dt>Output</dt><dd>Decisione finale più chiara, con meno dipendenza da oscillazioni di conversione a valle.</dd></div>
             </dl>
           </article>
           <article class="case-card">
             <p class="case-label">Single page app</p>
             <h3>Experience applicata troppo presto</h3>
             <dl class="case-details">
-              <div>
-                <dt>Problema</dt>
-                <dd>Adobe Target eseguiva la modifica prima che il componente principale fosse disponibile nel DOM.</dd>
-              </div>
-              <div>
-                <dt>Ipotesi</dt>
-                <dd>Un'applicazione più contestuale della modifica avrebbe ridotto flicker e doppie manipolazioni.</dd>
-              </div>
-              <div>
-                <dt>Implementazione</dt>
-                <dd>MutationObserver limitato al contenitore rilevante, timeout e disconnessione dopo l'applicazione.</dd>
-              </div>
-              <div>
-                <dt>Misurazione</dt>
-                <dd>QA su navigazioni SPA, reload, resize e stati asincroni del componente osservato.</dd>
-              </div>
-              <div>
-                <dt>Output</dt>
-                <dd>Experience più stabile su navigazioni dinamiche e minore rischio di flicker o doppie modifiche.</dd>
-              </div>
+              <div><dt>Problema</dt><dd>Adobe Target eseguiva la modifica prima che il componente principale fosse disponibile nel DOM.</dd></div>
+              <div><dt>Ipotesi</dt><dd>Un'applicazione più contestuale della modifica avrebbe ridotto flicker e doppie manipolazioni.</dd></div>
+              <div><dt>Implementazione</dt><dd>MutationObserver limitato al contenitore rilevante, timeout e disconnessione dopo l'applicazione.</dd></div>
+              <div><dt>Misurazione</dt><dd>QA su navigazioni SPA, reload, resize e stati asincroni del componente osservato.</dd></div>
+              <div><dt>Output</dt><dd>Experience più stabile su navigazioni dinamiche e minore rischio di flicker o doppie modifiche.</dd></div>
             </dl>
           </article>
         </div>
@@ -292,12 +244,11 @@
         <div class="articles-grid" id="articles-grid" aria-live="polite"></div>
         <p class="empty-state" id="empty-state" hidden>Nessun articolo trovato con i filtri attuali.</p>
       </section>
-
     </main>
 
-    <footer id="contact" class="site-footer">
+    <footer id="linkedin" class="site-footer">
       <div>
-        <p class="eyebrow">Contatti</p>
+        <p class="eyebrow">LinkedIn</p>
         <h2>Federico Marras</h2>
         <p>Note e risorse su sperimentazione digitale, tracking strategy e implementazioni Adobe.</p>
       </div>
