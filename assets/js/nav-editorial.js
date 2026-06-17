@@ -2,6 +2,7 @@
   "use strict";
 
   var mobileNavBreakpoint = 820;
+  var logoPath = "/assets/image/logo.png";
   var siteHeader = document.getElementById("site-header");
   var navMenuToggle = document.getElementById("nav-menu-toggle");
   var navActions = document.querySelector(".nav-actions");
@@ -18,7 +19,7 @@
 
   function normalizeLogo() {
     if (!navBrandImage) return;
-    navBrandImage.setAttribute("src", "/assets/img/logo.png");
+    navBrandImage.setAttribute("src", logoPath);
     navBrandImage.setAttribute("alt", "");
   }
 
