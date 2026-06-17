@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Sito personale di Federico Marras su A/B testing, Adobe Target, Adobe Analytics, Data Collection, CRO e tracking strategy.">
     <title>Federico Marras | Experimentation, Analytics & CRO</title>
-    <link rel="icon" type="image/png" href="/assets/img/logo.png">
-    <link rel="apple-touch-icon" href="/assets/img/logo.png">
+    <link rel="icon" type="image/svg+xml" href="/assets/img/logo-nav.svg">
+    <link rel="apple-touch-icon" href="/assets/img/logo-nav.svg">
     <link rel="stylesheet" href="/assets/css/style.css">
   </head>
   <body id="top">
@@ -16,7 +16,7 @@
       <nav class="nav-shell" aria-label="Navigazione principale">
         <a class="nav-brand" href="#top" aria-label="Torna all'inizio">
           <span class="nav-brand-mark" aria-hidden="true">
-            <img src="/assets/img/logo.png" alt="">
+            <img src="/assets/img/logo-nav.svg" alt="">
           </span>
           <span class="nav-brand-text">Federico Marras</span>
         </a>
@@ -111,151 +111,25 @@
           <h2>Stack tecnico e pensiero sperimentale nello stesso posto.</h2>
         </div>
         <div class="competence-grid">
-          <article class="info-card">
-            <span class="card-kicker">01</span>
-            <h3>Adobe Target</h3>
-            <p>Setup di esperimenti, QA delle experience, gestione audience e personalizzazioni su pagine statiche o dinamiche.</p>
-          </article>
-          <article class="info-card">
-            <span class="card-kicker">02</span>
-            <h3>Adobe Analytics</h3>
-            <p>Lettura dei dati, metriche primarie, guardrail, segmenti e controlli per evitare interpretazioni fragili.</p>
-          </article>
-          <article class="info-card">
-            <span class="card-kicker">03</span>
-            <h3>Adobe Data Collection</h3>
-            <p>Strategia eventi, regole, data elements e governance del tracking tra implementazione e reporting.</p>
-          </article>
-          <article class="info-card">
-            <span class="card-kicker">04</span>
-            <h3>JavaScript e DOM</h3>
-            <p>Manipolazioni robuste, MutationObserver, controlli anti-duplicazione e integrazione con pagine renderizzate in ritardo.</p>
-          </article>
+          <article class="info-card"><span class="card-kicker">01</span><h3>Adobe Target</h3><p>Setup di esperimenti, QA delle experience, gestione audience e personalizzazioni su pagine statiche o dinamiche.</p></article>
+          <article class="info-card"><span class="card-kicker">02</span><h3>Adobe Analytics</h3><p>Lettura dei dati, metriche primarie, guardrail, segmenti e controlli per evitare interpretazioni fragili.</p></article>
+          <article class="info-card"><span class="card-kicker">03</span><h3>Adobe Data Collection</h3><p>Strategia eventi, regole, data elements e governance del tracking tra implementazione e reporting.</p></article>
+          <article class="info-card"><span class="card-kicker">04</span><h3>JavaScript e DOM</h3><p>Manipolazioni robuste, MutationObserver, controlli anti-duplicazione e integrazione con pagine renderizzate in ritardo.</p></article>
         </div>
       </section>
 
-      <section id="method" class="section-shell split-section">
-        <div class="section-heading">
-          <p class="eyebrow">Metodo</p>
-          <h2>Esperimenti progettati per essere letti, non solo lanciati.</h2>
-        </div>
-        <div class="method-list">
-          <article>
-            <h3>1. Ipotesi e metrica</h3>
-            <p>Prima del codice: cosa dovrebbe cambiare, per chi, e quale segnale usare per capirlo.</p>
-          </article>
-          <article>
-            <h3>2. Tracking strategy</h3>
-            <p>Eventi, variabili, naming, deduplica e punti di controllo vengono definiti prima del go-live.</p>
-          </article>
-          <article>
-            <h3>3. Implementazione e QA</h3>
-            <p>Target, Data Collection e DOM vengono verificati insieme, su device e condizioni realistiche.</p>
-          </article>
-          <article>
-            <h3>4. Lettura del risultato</h3>
-            <p>Il risultato viene interpretato guardando metrica primaria, guardrail, segmenti e coerenza campionaria.</p>
-          </article>
-        </div>
-      </section>
+      <section id="method" class="section-shell split-section"><div class="section-heading"><p class="eyebrow">Metodo</p><h2>Esperimenti progettati per essere letti, non solo lanciati.</h2></div><div class="method-list"><article><h3>1. Ipotesi e metrica</h3><p>Prima del codice: cosa dovrebbe cambiare, per chi, e quale segnale usare per capirlo.</p></article><article><h3>2. Tracking strategy</h3><p>Eventi, variabili, naming, deduplica e punti di controllo vengono definiti prima del go-live.</p></article><article><h3>3. Implementazione e QA</h3><p>Target, Data Collection e DOM vengono verificati insieme, su device e condizioni realistiche.</p></article><article><h3>4. Lettura del risultato</h3><p>Il risultato viene interpretato guardando metrica primaria, guardrail, segmenti e coerenza campionaria.</p></article></div></section>
 
-      <section id="tracking-demo" class="section-shell demo-section">
-        <div class="section-heading">
-          <p class="eyebrow">Mini tracking demo</p>
-          <h2>Un evento demo, visibile nel data layer.</h2>
-        </div>
-        <div class="demo-card">
-          <div>
-            <h3>Simula un click tracciato</h3>
-            <p>Il bottone inserisce un evento in <code>window.dataLayer</code> e mostra il payload generato.</p>
-            <button class="button primary" type="button" id="demo-tracking-button">Simula click CTA</button>
-          </div>
-          <pre class="demo-output" id="demo-tracking-output"><code>dataLayer.push({
+      <section id="tracking-demo" class="section-shell demo-section"><div class="section-heading"><p class="eyebrow">Mini tracking demo</p><h2>Un evento demo, visibile nel data layer.</h2></div><div class="demo-card"><div><h3>Simula un click tracciato</h3><p>Il bottone inserisce un evento in <code>window.dataLayer</code> e mostra il payload generato.</p><button class="button primary" type="button" id="demo-tracking-button">Simula click CTA</button></div><pre class="demo-output" id="demo-tracking-output"><code>dataLayer.push({
   event: "waiting_for_interaction"
-});</code></pre>
-        </div>
-      </section>
+});</code></pre></div></section>
 
-      <section id="case-studies" class="section-shell">
-        <div class="section-heading">
-          <p class="eyebrow">Casi studio anonimi</p>
-          <h2>Problemi reali, senza nomi o dati sensibili.</h2>
-        </div>
-        <div class="case-grid">
-          <article class="case-card">
-            <p class="case-label">E-commerce</p>
-            <h3>Tracking incoerente tra varianti</h3>
-            <dl class="case-details">
-              <div><dt>Problema</dt><dd>La variante generava eventi duplicati sulle CTA renderizzate dopo il caricamento iniziale.</dd></div>
-              <div><dt>Ipotesi</dt><dd>Il rumore nel tracking stava alterando il confronto tra controllo e variante più della modifica visuale.</dd></div>
-              <div><dt>Implementazione</dt><dd>Controlli DOM, flag anti-duplicazione e nomenclatura eventi più esplicita in Data Collection.</dd></div>
-              <div><dt>Misurazione</dt><dd>Confronto tra eventi raw, chiamate Adobe Analytics e conteggi aggregati per variante.</dd></div>
-              <div><dt>Output</dt><dd>Dataset più leggibile e confronto tra varianti meno rumoroso durante l'analisi.</dd></div>
-            </dl>
-          </article>
-          <article class="case-card">
-            <p class="case-label">Lead generation</p>
-            <h3>Metrica primaria poco stabile</h3>
-            <dl class="case-details">
-              <div><dt>Problema</dt><dd>La metrica scelta era troppo distante dall'interazione modificata dall'esperimento.</dd></div>
-              <div><dt>Ipotesi</dt><dd>Una metrica più vicina al comportamento osservato avrebbe reso la lettura meno ambigua.</dd></div>
-              <div><dt>Implementazione</dt><dd>Separazione tra metrica primaria, metriche secondarie e guardrail di qualità del lead.</dd></div>
-              <div><dt>Misurazione</dt><dd>Lettura combinata di click qualificati, completamenti form e segnali di qualità post-submit.</dd></div>
-              <div><dt>Output</dt><dd>Decisione finale più chiara, con meno dipendenza da oscillazioni di conversione a valle.</dd></div>
-            </dl>
-          </article>
-          <article class="case-card">
-            <p class="case-label">Single page app</p>
-            <h3>Experience applicata troppo presto</h3>
-            <dl class="case-details">
-              <div><dt>Problema</dt><dd>Adobe Target eseguiva la modifica prima che il componente principale fosse disponibile nel DOM.</dd></div>
-              <div><dt>Ipotesi</dt><dd>Un'applicazione più contestuale della modifica avrebbe ridotto flicker e doppie manipolazioni.</dd></div>
-              <div><dt>Implementazione</dt><dd>MutationObserver limitato al contenitore rilevante, timeout e disconnessione dopo l'applicazione.</dd></div>
-              <div><dt>Misurazione</dt><dd>QA su navigazioni SPA, reload, resize e stati asincroni del componente osservato.</dd></div>
-              <div><dt>Output</dt><dd>Experience più stabile su navigazioni dinamiche e minore rischio di flicker o doppie modifiche.</dd></div>
-            </dl>
-          </article>
-        </div>
-      </section>
+      <section id="case-studies" class="section-shell"><div class="section-heading"><p class="eyebrow">Casi studio anonimi</p><h2>Problemi reali, senza nomi o dati sensibili.</h2></div><div class="case-grid"><article class="case-card"><p class="case-label">E-commerce</p><h3>Tracking incoerente tra varianti</h3><dl class="case-details"><div><dt>Problema</dt><dd>La variante generava eventi duplicati sulle CTA renderizzate dopo il caricamento iniziale.</dd></div><div><dt>Ipotesi</dt><dd>Il rumore nel tracking stava alterando il confronto tra controllo e variante più della modifica visuale.</dd></div><div><dt>Implementazione</dt><dd>Controlli DOM, flag anti-duplicazione e nomenclatura eventi più esplicita in Data Collection.</dd></div><div><dt>Misurazione</dt><dd>Confronto tra eventi raw, chiamate Adobe Analytics e conteggi aggregati per variante.</dd></div><div><dt>Output</dt><dd>Dataset più leggibile e confronto tra varianti meno rumoroso durante l'analisi.</dd></div></dl></article><article class="case-card"><p class="case-label">Lead generation</p><h3>Metrica primaria poco stabile</h3><dl class="case-details"><div><dt>Problema</dt><dd>La metrica scelta era troppo distante dall'interazione modificata dall'esperimento.</dd></div><div><dt>Ipotesi</dt><dd>Una metrica più vicina al comportamento osservato avrebbe reso la lettura meno ambigua.</dd></div><div><dt>Implementazione</dt><dd>Separazione tra metrica primaria, metriche secondarie e guardrail di qualità del lead.</dd></div><div><dt>Misurazione</dt><dd>Lettura combinata di click qualificati, completamenti form e segnali di qualità post-submit.</dd></div><div><dt>Output</dt><dd>Decisione finale più chiara, con meno dipendenza da oscillazioni di conversione a valle.</dd></div></dl></article><article class="case-card"><p class="case-label">Single page app</p><h3>Experience applicata troppo presto</h3><dl class="case-details"><div><dt>Problema</dt><dd>Adobe Target eseguiva la modifica prima che il componente principale fosse disponibile nel DOM.</dd></div><div><dt>Ipotesi</dt><dd>Un'applicazione più contestuale della modifica avrebbe ridotto flicker e doppie manipolazioni.</dd></div><div><dt>Implementazione</dt><dd>MutationObserver limitato al contenitore rilevante, timeout e disconnessione dopo l'applicazione.</dd></div><div><dt>Misurazione</dt><dd>QA su navigazioni SPA, reload, resize e stati asincroni del componente osservato.</dd></div><div><dt>Output</dt><dd>Experience più stabile su navigazioni dinamiche e minore rischio di flicker o doppie modifiche.</dd></div></dl></article></div></section>
 
-      <section id="articles" class="section-shell articles-section">
-        <div class="section-heading">
-          <p class="eyebrow">Appunti pratici</p>
-          <h2>Articoli, risorse e note operative.</h2>
-        </div>
-
-        <div class="article-tools" aria-label="Strumenti di filtro articoli">
-          <label class="search-field">
-            <span>Ricerca testuale</span>
-            <input id="article-search" type="search" placeholder="Cerca per metrica, Target, DOM..." autocomplete="off">
-          </label>
-          <label class="search-field compact-field">
-            <span>Ordina</span>
-            <select id="article-sort" aria-label="Ordina articoli">
-              <option value="default">Ordine editoriale</option>
-              <option value="title">Titolo</option>
-              <option value="category">Categoria</option>
-              <option value="readingTime">Tempo di lettura</option>
-            </select>
-          </label>
-          <div class="filter-group" id="category-filters" aria-label="Filtra per categoria"></div>
-        </div>
-
-        <div class="articles-grid" id="articles-grid" aria-live="polite"></div>
-        <p class="empty-state" id="empty-state" hidden>Nessun articolo trovato con i filtri attuali.</p>
-      </section>
+      <section id="articles" class="section-shell articles-section"><div class="section-heading"><p class="eyebrow">Appunti pratici</p><h2>Articoli, risorse e note operative.</h2></div><div class="article-tools" aria-label="Strumenti di filtro articoli"><label class="search-field"><span>Ricerca testuale</span><input id="article-search" type="search" placeholder="Cerca per metrica, Target, DOM..." autocomplete="off"></label><label class="search-field compact-field"><span>Ordina</span><select id="article-sort" aria-label="Ordina articoli"><option value="default">Ordine editoriale</option><option value="title">Titolo</option><option value="category">Categoria</option><option value="readingTime">Tempo di lettura</option></select></label><div class="filter-group" id="category-filters" aria-label="Filtra per categoria"></div></div><div class="articles-grid" id="articles-grid" aria-live="polite"></div><p class="empty-state" id="empty-state" hidden>Nessun articolo trovato con i filtri attuali.</p></section>
     </main>
 
-    <footer id="linkedin" class="site-footer">
-      <div>
-        <p class="eyebrow">LinkedIn</p>
-        <h2>Federico Marras</h2>
-        <p>Note e risorse su sperimentazione digitale, tracking strategy e implementazioni Adobe.</p>
-      </div>
-      <div class="footer-links" aria-label="Link esterni">
-        <a href="https://www.linkedin.com/in/federico-marras/" data-track="footer_linkedin">LinkedIn</a>
-      </div>
-    </footer>
+    <footer id="linkedin" class="site-footer"><div><p class="eyebrow">LinkedIn</p><h2>Federico Marras</h2><p>Note e risorse su sperimentazione digitale, tracking strategy e implementazioni Adobe.</p></div><div class="footer-links" aria-label="Link esterni"><a href="https://www.linkedin.com/in/federico-marras/" data-track="footer_linkedin">LinkedIn</a></div></footer>
 
     <script src="/assets/js/main.js"></script>
   </body>
