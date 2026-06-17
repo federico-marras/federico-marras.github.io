@@ -1,0 +1,8 @@
+.nav-brand-mark img {
+  position: relative;
+  z-index: 1;
+}
+
+.nav-brand-mark::after {
+  z-index: 2;
+}
