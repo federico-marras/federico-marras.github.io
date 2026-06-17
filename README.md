@@ -30,7 +30,6 @@ Il progetto è pensato per GitHub Pages: HTML, CSS e JavaScript puro, senza fram
 - Sezioni competenze, metodo, casi studio anonimi e articoli.
 - Articoli renderizzati dinamicamente da array JavaScript.
 - Filtri per categoria e ricerca testuale.
-- Dark mode con preferenza salvata in `localStorage`.
 - Progress bar di scroll.
 - Demo tracking tramite `window.dataLayer.push()`.
 - Compatibilità diretta con GitHub Pages.
