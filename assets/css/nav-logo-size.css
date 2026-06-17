@@ -13,7 +13,7 @@
 .nav-brand-mark img {
   display: block;
   object-fit: contain;
-  content: url("/assets/img/logo.png?v=4");
+  content: url("/assets/image/logo.png?v=1");
 }
 
 .nav-brand-mark::after {
