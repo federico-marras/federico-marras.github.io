@@ -15,12 +15,22 @@
   transition: background 180ms ease, border-color 180ms ease, backdrop-filter 180ms ease;
 }
 
-.site-header.is-scrolled,
 .site-header.is-open {
   border-bottom: 1px solid var(--line);
   background: rgba(15, 17, 23, 0.78);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
+}
+
+.site-header.is-scrolled {
+  border-bottom: 0;
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.scroll-progress {
+  z-index: 2000;
 }
 
 .nav-inner {
