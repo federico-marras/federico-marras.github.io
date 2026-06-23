@@ -20,6 +20,23 @@
   display: none;
 }
 
+.site-header.is-scrolled {
+  border-bottom: 0 !important;
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.site-header.is-open {
+  border-bottom: 1px solid var(--line);
+  background: rgba(15, 17, 23, 0.78);
+}
+
+.scroll-progress {
+  z-index: 2000 !important;
+  height: 3px;
+}
+
 @media (max-width: 820px) {
   .nav-brand-mark,
   .nav-brand-mark img {
