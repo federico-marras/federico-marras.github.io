@@ -10,6 +10,19 @@
   var themeToggle = document.getElementById("theme-toggle");
   var navBrandImage = document.querySelector(".nav-brand-mark img");
 
+  function injectLiveStyles() {
+    if (document.getElementById("nav-live-fixes")) return;
+
+    var style = document.createElement("style");
+    style.id = "nav-live-fixes";
+    style.textContent = [
+      ".scroll-progress{z-index:2000!important;height:3px!important;}",
+      ".site-header.is-scrolled{border-bottom:0!important;background:transparent!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;}",
+      ".site-header.is-open{border-bottom:1px solid var(--line);background:rgba(15,17,23,.78);}"
+    ].join("");
+    document.head.appendChild(style);
+  }
+
   function removeThemeToggle() {
     if (themeToggle && themeToggle.parentNode) {
       themeToggle.parentNode.removeChild(themeToggle);
@@ -126,6 +139,7 @@
     });
   }
 
+  injectLiveStyles();
   removeThemeToggle();
   normalizeLogo();
   buildHamburgerButton();
