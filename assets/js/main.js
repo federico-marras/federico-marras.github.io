@@ -70,11 +70,11 @@ const sortInput = document.querySelector("#article-sort");
 const filterContainer = document.querySelector("#category-filters");
 const emptyState = document.querySelector("#empty-state");
 const progressBar = document.querySelector("#scroll-progress");
-const themeToggle = document.querySelector("#theme-toggle");
 const siteHeader = document.querySelector("#site-header");
 const navMenuToggle = document.querySelector("#nav-menu-toggle");
 const navLinks = document.querySelectorAll(".nav-link");
 const rotatingKeyword = document.querySelector("#rotating-keyword");
+const heroOrbit = document.querySelector("#hero-orbit");
 const demoTrackingButton = document.querySelector("#demo-tracking-button");
 const demoTrackingOutput = document.querySelector("#demo-tracking-output code");
 const revealTargets = document.querySelectorAll(".section-shell, .signal-band");
@@ -88,6 +88,7 @@ window.dataLayer = window.dataLayer || [];
 let selectedCategory = "Tutti";
 let hasInteractedWithArticles = false;
 let keywordIndex = 0;
+const mobileNavBreakpoint = 820;
 
 function pushTrackingEvent(eventName, payload = {}) {
   window.dataLayer.push({
@@ -112,6 +113,10 @@ function articleMatchesSearch(article, query) {
 }
 
 function renderCategoryFilters() {
+  if (!filterContainer) {
+    return;
+  }
+
   filterContainer.innerHTML = getCategories()
     .map(
       (category) => `
@@ -124,6 +129,10 @@ function renderCategoryFilters() {
 }
 
 function renderArticles() {
+  if (!articleGrid || !searchInput || !sortInput || !emptyState) {
+    return;
+  }
+
   const query = normalizeText(searchInput.value);
   const filteredArticles = articles.filter((article) => {
     const matchesCategory = selectedCategory === "Tutti" || article.category === selectedCategory;
@@ -176,11 +185,20 @@ function rotateKeyword() {
     return;
   }
 
-  keywordIndex = (keywordIndex + 1) % rotatingKeywords.length;
-  rotatingKeyword.textContent = rotatingKeywords[keywordIndex];
+  rotatingKeyword.classList.add("is-changing");
+
+  window.setTimeout(() => {
+    keywordIndex = (keywordIndex + 1) % rotatingKeywords.length;
+    rotatingKeyword.textContent = rotatingKeywords[keywordIndex];
+    rotatingKeyword.classList.remove("is-changing");
+  }, 220);
 }
 
 function renderDemoTrackingEvent() {
+  if (!demoTrackingOutput) {
+    return;
+  }
+
   const payload = {
     event: "cta_click",
     area: "homepage_hero",
@@ -192,6 +210,10 @@ function renderDemoTrackingEvent() {
 }
 
 function initRevealOnScroll() {
+  if (!revealTargets.length || !window.IntersectionObserver) {
+    return;
+  }
+
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -211,20 +233,48 @@ function initRevealOnScroll() {
 }
 
 function updateScrollProgress() {
+  if (!progressBar) {
+    return;
+  }
+
   const scrollable = document.documentElement.scrollHeight - window.innerHeight;
   const progress = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
   progressBar.style.width = `${Math.min(progress, 100)}%`;
 }
 
-function applyTheme(theme) {
-  document.documentElement.dataset.theme = theme;
-  themeToggle.setAttribute("aria-pressed", String(theme === "dark"));
-  localStorage.setItem("theme", theme);
+function updateHeaderState() {
+  if (!siteHeader) {
+    return;
+  }
+
+  siteHeader.classList.toggle("is-scrolled", window.scrollY > 56);
 }
 
-function initTheme() {
-  const savedTheme = localStorage.getItem("theme");
-  applyTheme(savedTheme || "dark");
+function initHeroOrbitParallax() {
+  if (!heroOrbit) {
+    return;
+  }
+
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const isCoarsePointer = window.matchMedia("(pointer: coarse)").matches;
+
+  if (prefersReducedMotion || isCoarsePointer) {
+    return;
+  }
+
+  heroOrbit.addEventListener("pointermove", (event) => {
+    const bounds = heroOrbit.getBoundingClientRect();
+    const x = (event.clientX - bounds.left) / bounds.width - 0.5;
+    const y = (event.clientY - bounds.top) / bounds.height - 0.5;
+
+    heroOrbit.style.setProperty("--orbit-shift-x", `${(x * 14).toFixed(2)}px`);
+    heroOrbit.style.setProperty("--orbit-shift-y", `${(y * 14).toFixed(2)}px`);
+  });
+
+  heroOrbit.addEventListener("pointerleave", () => {
+    heroOrbit.style.setProperty("--orbit-shift-x", "0px");
+    heroOrbit.style.setProperty("--orbit-shift-y", "0px");
+  });
 }
 
 function closeMobileNav() {
@@ -232,13 +282,10 @@ function closeMobileNav() {
     return;
   }
 
-  const icon = navMenuToggle.querySelector("span");
   siteHeader.classList.remove("is-open");
+  document.body.classList.remove("nav-lock");
   navMenuToggle.setAttribute("aria-expanded", "false");
   navMenuToggle.setAttribute("aria-label", "Apri menu");
-  if (icon) {
-    icon.textContent = "☰";
-  }
 }
 
 function toggleMobileNav() {
@@ -246,12 +293,15 @@ function toggleMobileNav() {
     return;
   }
 
-  const icon = navMenuToggle.querySelector("span");
   const isOpen = siteHeader.classList.toggle("is-open");
+  document.body.classList.toggle("nav-lock", isOpen);
   navMenuToggle.setAttribute("aria-expanded", String(isOpen));
   navMenuToggle.setAttribute("aria-label", isOpen ? "Chiudi menu" : "Apri menu");
-  if (icon) {
-    icon.textContent = isOpen ? "×" : "☰";
+}
+
+function closeMobileNavAboveBreakpoint() {
+  if (window.innerWidth > mobileNavBreakpoint) {
+    closeMobileNav();
   }
 }
 
@@ -286,40 +336,42 @@ function initNavigation() {
     }
   });
 
+  window.addEventListener("resize", closeMobileNavAboveBreakpoint);
+
   setActiveNavLink();
+  updateHeaderState();
 }
 
-filterContainer.addEventListener("click", (event) => {
-  const button = event.target.closest("button[data-category]");
-  if (!button) {
-    return;
-  }
+if (filterContainer) {
+  filterContainer.addEventListener("click", (event) => {
+    const button = event.target.closest("button[data-category]");
+    if (!button) {
+      return;
+    }
 
-  selectedCategory = button.dataset.category;
-  hasInteractedWithArticles = true;
-  renderCategoryFilters();
-  renderArticles();
-  pushTrackingEvent("article_filter_click", { filter_category: selectedCategory });
-});
+    selectedCategory = button.dataset.category;
+    hasInteractedWithArticles = true;
+    renderCategoryFilters();
+    renderArticles();
+    pushTrackingEvent("article_filter_click", { filter_category: selectedCategory });
+  });
+}
 
-searchInput.addEventListener("input", () => {
-  hasInteractedWithArticles = true;
-  renderArticles();
-  pushTrackingEvent("article_search", { search_term: searchInput.value });
-});
+if (searchInput) {
+  searchInput.addEventListener("input", () => {
+    hasInteractedWithArticles = true;
+    renderArticles();
+    pushTrackingEvent("article_search", { search_term: searchInput.value });
+  });
+}
 
-sortInput.addEventListener("change", () => {
-  hasInteractedWithArticles = true;
-  renderArticles();
-  pushTrackingEvent("article_sort_change", { sort_mode: sortInput.value });
-});
-
-themeToggle.addEventListener("click", () => {
-  const currentTheme = document.documentElement.dataset.theme === "dark" ? "dark" : "light";
-  const nextTheme = currentTheme === "dark" ? "light" : "dark";
-  applyTheme(nextTheme);
-  pushTrackingEvent("theme_toggle", { theme: nextTheme });
-});
+if (sortInput) {
+  sortInput.addEventListener("change", () => {
+    hasInteractedWithArticles = true;
+    renderArticles();
+    pushTrackingEvent("article_sort_change", { sort_mode: sortInput.value });
+  });
+}
 
 document.addEventListener("click", (event) => {
   const trackedElement = event.target.closest("[data-track], [data-article-slug]");
@@ -333,15 +385,18 @@ document.addEventListener("click", (event) => {
   });
 });
 
-demoTrackingButton.addEventListener("click", renderDemoTrackingEvent);
+if (demoTrackingButton) {
+  demoTrackingButton.addEventListener("click", renderDemoTrackingEvent);
+}
 
 window.addEventListener("scroll", updateScrollProgress, { passive: true });
 window.addEventListener("scroll", setActiveNavLink, { passive: true });
+window.addEventListener("scroll", updateHeaderState, { passive: true });
 window.addEventListener("resize", setActiveNavLink);
-setInterval(rotateKeyword, 2200);
+setInterval(rotateKeyword, 3800);
 
-initTheme();
 initNavigation();
+initHeroOrbitParallax();
 initRevealOnScroll();
 renderCategoryFilters();
 renderArticles();
