@@ -26,6 +26,17 @@
   margin-inline: auto !important;
 }
 
+.tool-logo-mark img {
+  display: block;
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
+.adobe-mark img {
+  filter: brightness(0) invert(1);
+}
+
 @media (max-width: 1180px) {
   .hero-orbit {
     width: min(100%, 760px) !important;
