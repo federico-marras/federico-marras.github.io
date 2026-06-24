@@ -14,6 +14,13 @@
   box-shadow: 0 0 18px rgba(185, 136, 232, 0.36) !important;
 }
 
+.site-header.is-scrolled {
+  background: rgba(7, 10, 24, 0.42) !important;
+  border-bottom-color: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+}
+
 .nav-link {
   font-family: "Space Grotesk", Inter, ui-sans-serif, system-ui, sans-serif !important;
   font-size: 0.76rem !important;
@@ -88,10 +95,14 @@
 
 .hero-orbit {
   min-height: min(78vw, 780px) !important;
+  width: 100% !important;
+  justify-self: center !important;
+  overflow: visible !important;
 }
 
 .orbit-field {
   width: min(100%, 780px) !important;
+  margin-inline: auto !important;
 }
 
 .orbit-ring-one { width: 40% !important; height: 40% !important; }
@@ -137,7 +148,7 @@
 .case-card,
 .article-card,
 .workflow-grid article,
-.demo-card {
+demo-card {
   background: linear-gradient(180deg, rgba(23, 26, 34, 0.98), rgba(18, 22, 34, 0.98)) !important;
   border-color: rgba(255, 255, 255, 0.12) !important;
 }
