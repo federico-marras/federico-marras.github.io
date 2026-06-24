@@ -38,10 +38,7 @@
 }
 
 .orbit-core strong {
-  max-width: 210px !important;
   font-size: clamp(2rem, 2.65vw, 3.05rem) !important;
-  line-height: 0.98 !important;
-  letter-spacing: -0.02em !important;
   text-align: center !important;
 }
 
