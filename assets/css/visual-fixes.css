@@ -1,0 +1,46 @@
+/* Last-loaded visual corrections. */
+.site-header.is-scrolled:not(.is-open) {
+  border-bottom-color: rgba(255, 255, 255, 0.05) !important;
+  background: rgba(7, 10, 24, 0.24) !important;
+  backdrop-filter: blur(10px) saturate(1.05) !important;
+  -webkit-backdrop-filter: blur(10px) saturate(1.05) !important;
+}
+
+.hero-inner {
+  overflow: visible !important;
+}
+
+.hero-orbit {
+  --orbit-shift-x: 0px !important;
+  --orbit-shift-y: 0px !important;
+  width: min(100%, 820px) !important;
+  max-width: 820px !important;
+  margin-inline: auto !important;
+  justify-self: center !important;
+  place-items: center !important;
+  transform: none !important;
+}
+
+.orbit-field {
+  width: min(100%, 760px) !important;
+  margin-inline: auto !important;
+}
+
+@media (max-width: 1180px) {
+  .hero-orbit {
+    width: min(100%, 760px) !important;
+    max-width: 760px !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .hero-orbit {
+    width: 100% !important;
+    max-width: 500px !important;
+    min-height: 500px !important;
+  }
+
+  .orbit-field {
+    width: min(100%, 470px) !important;
+  }
+}
