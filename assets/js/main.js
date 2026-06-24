@@ -1,59 +1,4 @@
-const articles = [
-  {
-    title: "Checklist QA per un A/B test in Adobe Target",
-    category: "Adobe Target",
-    description:
-      "Controlli essenziali su audience, experience, eventi analytics, fallback e comportamento responsive.",
-    readingTime: "7 min",
-    status: "Published",
-    slug: "checklist-qa-adobe-target"
-  },
-  {
-    title: "Come scegliere la primary metric di un esperimento",
-    category: "CRO",
-    description:
-      "Un criterio pratico per collegare ipotesi, comportamento utente, metrica primaria e guardrail.",
-    readingTime: "6 min",
-    status: "Published",
-    slug: "primary-metric-ab-test"
-  },
-  {
-    title: "MutationObserver negli esperimenti Adobe Target",
-    category: "JavaScript",
-    description:
-      "Come applicare experience su DOM che cambia dopo il caricamento, evitando loop e duplicazioni.",
-    readingTime: "8 min",
-    status: "Published",
-    slug: "mutationobserver-adobe-target"
-  },
-  {
-    title: "Tracking strategy: prima gli eventi, poi il report",
-    category: "Tracking",
-    description:
-      "Note su naming, data layer, ownership e verifiche prima di affidare un esperimento ai dati.",
-    readingTime: "5 min",
-    status: "Draft",
-    slug: "tracking-strategy-eventi-report"
-  },
-  {
-    title: "Adobe Data Collection: regole leggibili nel tempo",
-    category: "Adobe Data Collection",
-    description:
-      "Una struttura mentale per mantenere regole, data elements e condizioni comprensibili anche mesi dopo.",
-    readingTime: "6 min",
-    status: "In progress",
-    slug: "adobe-data-collection-regole"
-  },
-  {
-    title: "Sample ratio mismatch: segnali da non ignorare",
-    category: "Analytics",
-    description:
-      "Perché controllare la distribuzione del traffico è utile prima di interpretare uplift e confidence.",
-    readingTime: "4 min",
-    status: "Draft",
-    slug: "sample-ratio-mismatch"
-  }
-];
+const articles = [];
 
 const rotatingKeywords = [
   "Adobe Target",
@@ -155,12 +100,7 @@ function renderArticles() {
 
   articleGrid.innerHTML = sortedArticles
     .map((article) => {
-      const isStaticArticle = [
-        "checklist-qa-adobe-target",
-        "primary-metric-ab-test",
-        "mutationobserver-adobe-target"
-      ].includes(article.slug);
-      const href = isStaticArticle ? `/articles/${article.slug}.html` : "#articles";
+      const href = article.slug ? `/articles/${article.slug}.html` : "#articles";
 
       return `
         <article class="article-card" data-status="${article.status}">
