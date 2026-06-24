@@ -41,15 +41,24 @@
   border-radius: 9px;
 }
 
-.tool-logo-mark svg {
+.tool-logo-mark svg,
+.tool-logo-mark img {
   width: 22px;
   height: 22px;
+  object-fit: contain;
+}
+
+.tool-logo-mark svg {
   fill: currentColor;
 }
 
 .adobe-mark {
   background: #ed2224;
   color: #ffffff;
+}
+
+.adobe-mark img {
+  filter: brightness(0) invert(1);
 }
 
 .dynamic-yield-mark {
