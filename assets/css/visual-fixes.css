@@ -26,6 +26,32 @@
   margin-inline: auto !important;
 }
 
+.orbit-core {
+  display: flex !important;
+  width: 250px !important;
+  height: 250px !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-direction: column !important;
+  gap: 14px !important;
+  text-align: center !important;
+}
+
+.orbit-core strong {
+  max-width: 210px !important;
+  font-size: clamp(2rem, 2.65vw, 3.05rem) !important;
+  line-height: 0.98 !important;
+  letter-spacing: -0.02em !important;
+  text-align: center !important;
+}
+
+.orbit-core span {
+  max-width: 190px !important;
+  font-size: 0.68rem !important;
+  line-height: 1.25 !important;
+  text-align: center !important;
+}
+
 .tool-logo-mark img {
   display: block;
   width: 22px;
@@ -53,5 +79,21 @@
 
   .orbit-field {
     width: min(100%, 470px) !important;
+  }
+
+  .orbit-core {
+    width: 156px !important;
+    height: 156px !important;
+    gap: 8px !important;
+  }
+
+  .orbit-core strong {
+    max-width: 132px !important;
+    font-size: clamp(1.55rem, 9vw, 2.1rem) !important;
+  }
+
+  .orbit-core span {
+    max-width: 128px !important;
+    font-size: 0.58rem !important;
   }
 }
