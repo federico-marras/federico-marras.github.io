@@ -49,6 +49,14 @@
   text-align: center !important;
 }
 
+.section-intro {
+  max-width: 680px;
+  margin: 0;
+  color: rgba(244, 244, 245, 0.72);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
 .tool-logo-mark img {
   display: block;
   width: 22px;
